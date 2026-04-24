@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مينا في ظل الخليفة | اختبار المشاهدة</title>
+  <meta name="description" content="اختبار قصير لفيلم مينا في ظل الخليفة" />
+  <style>
+    :root {
+      --bg: #070503;
+      --bg-2: #15100a;
+      --gold: #d6a84d;
+      --gold-soft: #f1d58b;
+      --papyrus: #ead7a4;
+      --red: #7b1e18;
+      --white: #fff8e6;
+      --muted: #c6b58a;
+      --card: rgba(24, 16, 9, 0.88);
+      --card-2: rgba(255, 248, 230, 0.055);
+      --border: rgba(214, 168, 77, 0.28);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Tahoma, Arial, sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 16% 12%, rgba(123, 30, 24, 0.42), transparent 28%),
+        radial-gradient(circle at 86% 8%, rgba(214, 168, 77, 0.20), transparent 22%),
+        linear-gradient(135deg, #050302, var(--bg-2) 55%, #030201);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 42px 42px;
+      pointer-events: none;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+    }
+
+    .page {
+      width: min(1050px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 28px 0;
+      position: relative;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .intro {
+      position: sticky;
+      top: 24px;
+      min-height: 560px;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 26px;
+      background:
+        linear-gradient(180deg, rgba(214, 168, 77, 0.10), rgba(123, 30, 24, 0.12)),
+        rgba(9, 6, 3, 0.72);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .intro::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(214, 168, 77, 0.18);
+      border-radius: 22px;
+      pointer-events: none;
+    }
+
+    .intro::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      right: -120px;
+      bottom: -100px;
+      background: radial-gradient(circle, rgba(214, 168, 77, 0.32), transparent 65%);
+      filter: blur(10px);
+    }
+
+    .seal {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(241, 213, 139, 0.50);
+      color: var(--gold-soft);
+      background: radial-gradient(circle, rgba(214,168,77,0.22), rgba(123,30,24,0.16));
+      font-size: 30px;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      color: var(--gold-soft);
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1.05;
+      text-shadow: 0 8px 28px rgba(0,0,0,0.65);
+    }
+
+    .subtitle {
+      margin: 20px 0 0;
+      color: var(--papyrus);
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .mini-card {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      border: 1px solid rgba(214, 168, 77, 0.24);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255,248,230,0.065);
+      backdrop-filter: blur(12px);
+      z-index: 1;
+    }
+
+    .mini-card strong {
+      display: block;
+      color: var(--gold-soft);
+      margin-bottom: 8px;
+      font-size: 17px;
+    }
+
+    .mini-card p {
+      margin: 0;
+      color: #e7d5a8;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .form-panel {
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 22px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .form-header {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(214, 168, 77, 0.16);
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 27px;
+      color: var(--white);
+    }
+
+    .form-header p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .field {
+      border: 1px solid rgba(214, 168, 77, 0.18);
+      background: var(--card-2);
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    .question {
+      display: block;
+      color: var(--gold-soft);
+      margin-bottom: 10px;
+      font-weight: 800;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .options.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .options.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+    .option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: rgba(7, 5, 3, 0.42);
+      border: 1px solid rgba(255, 248, 230, 0.06);
+      cursor: pointer;
+      transition: 0.16s ease;
+      color: #f5e8c5;
+      font-size: 14px;
+      line-height: 1.4;
+      text-align: center;
+      user-select: none;
+    }
+
+    .option:hover {
+      border-color: rgba(241, 213, 139, 0.42);
+      background: rgba(123, 30, 24, 0.20);
+      transform: translateY(-1px);
+    }
+
+    .option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .option:has(input:checked) {
+      border-color: rgba(241, 213, 139, 0.86);
+      background: linear-gradient(135deg, rgba(214,168,77,0.22), rgba(123,30,24,0.18));
+      color: var(--white);
+      box-shadow: inset 0 0 0 1px rgba(214,168,77,0.14);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      min-height: 48px;
+      border-radius: 14px;
+      border: 1px solid rgba(214, 168, 77, 0.26);
+      background: rgba(8, 6, 3, 0.70);
+      color: var(--white);
+      padding: 0 15px;
+      font-size: 15px;
+      outline: none;
+      direction: ltr;
+      text-align: left;
+    }
+
+    input[type="text"]:focus {
+      border-color: rgba(241, 213, 139, 0.78);
+      box-shadow: 0 0 0 4px rgba(214, 168, 77, 0.11);
+    }
+
+    .hint {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .submit-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 2px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 16px;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 900;
+      color: #1f1307;
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(214, 168, 77, 0.22);
+      transition: 0.16s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    button:disabled {
+      opacity: 0.62;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .status {
+      min-height: 24px;
+      color: var(--papyrus);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 920px) {
+      .shell { grid-template-columns: 1fr; }
+      .intro {
+        position: relative;
+        top: auto;
+        min-height: 430px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 18px, 1050px);
+        padding: 14px 0;
+      }
+
+      .intro,
+      .form-panel {
+        border-radius: 22px;
+        padding: 18px;
+      }
+
+      .intro { min-height: 420px; }
+
+      .options,
+      .options.three,
+      .options.five {
+        grid-template-columns: 1fr;
+      }
+
+      .option {
+        justify-content: flex-start;
+        text-align: right;
+      }
+
+      .mini-card {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="shell">
+      <aside class="intro" aria-label="Movie introduction">
+        <div class="seal">𓂀</div>
+        <div class="eyebrow">اختبار مشاهدة قصير</div>
+        <h1>مينا في ظل الخليفة</h1>
+        <p class="subtitle">
+          جاوب على خمسة أسئلة سريعة عن الفيلم، واكتب اسمك على تيك توك لتسجيل مشاركتك.
+        </p>
+
+        <div class="mini-card">
+          <strong>ثورة البشموريين | 749م - 750م</strong>
+          <p>
+            فيلم مصري قصير بالذكاء الاصطناعي يستعيد لحظة تاريخية نادرة من ذاكرة مصر، بين رشيد، البشمور، ومينا أبكير.
+          </p>
+        </div>
+      </aside>
+
+      <section class="form-panel">
+        <div class="form-header">
+          <h2>شارك في اختبار الفيلم</h2>
+          <p>بعد الإرسال، سيتم تسجيل إجابتك مع التاريخ والوقت تلقائيًا.</p>
+        </div>
+
+        <form id="movieForm" method="POST">
+          <div class="field">
+            <label class="question" for="tiktok">اسم مستخدم تيك توك</label>
+            <input id="tiktok" name="tiktok_username" type="text" placeholder="@username" required />
+            <div class="hint">مثال: @manetho.writer</div>
+          </div>
+
+          <div class="field">
+            <label class="question">1. في أي دقيقة بخيت أخذ خنجر مينا؟</label>
+            <div class="options three">
+              <label class="option"><input type="radio" name="q1_dagger_minute" value="الدقيقة 7" required /> الدقيقة 7</label>
+              <label class="option"><input type="radio" name="q1_dagger_minute" value="الدقيقة 9" /> الدقيقة 9</label>
+              <label class="option"><input type="radio" name="q1_dagger_minute" value="الدقيقة 11" /> الدقيقة 11</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="question">2. ما اسم جامع الضرائب؟</label>
+            <div class="options three">
+              <label class="option"><input type="radio" name="q2_tax_collector" value="غيث" required /> غيث</label>
+              <label class="option"><input type="radio" name="q2_tax_collector" value="عزيز" /> عزيز</label>
+              <label class="option"><input type="radio" name="q2_tax_collector" value="ليث" /> ليث</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="question">3. متى هجم البشموريون على رشيد؟</label>
+            <div class="options three">
+              <label class="option"><input type="radio" name="q3_attack_time" value="في الليل" required /> في الليل</label>
+              <label class="option"><input type="radio" name="q3_attack_time" value="في الفجر" /> في الفجر</label>
+              <label class="option"><input type="radio" name="q3_attack_time" value="في الصباح" /> في الصباح</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="question">4. ما هو تقييمك للفيلم؟</label>
+            <div class="options five">
+              <label class="option"><input type="radio" name="q4_movie_rating" value="1" required /> 1</label>
+              <label class="option"><input type="radio" name="q4_movie_rating" value="2" /> 2</label>
+              <label class="option"><input type="radio" name="q4_movie_rating" value="3" /> 3</label>
+              <label class="option"><input type="radio" name="q4_movie_rating" value="4" /> 4</label>
+              <label class="option"><input type="radio" name="q4_movie_rating" value="5" /> 5</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="question">5. كيف عرفت عن الفيلم؟</label>
+            <div class="options five">
+              <label class="option"><input type="radio" name="q5_discovery_source" value="يوتيوب" required /> يوتيوب</label>
+              <label class="option"><input type="radio" name="q5_discovery_source" value="تيك توك" /> تيك توك</label>
+              <label class="option"><input type="radio" name="q5_discovery_source" value="فيسبوك" /> فيسبوك</label>
+              <label class="option"><input type="radio" name="q5_discovery_source" value="صديق" /> صديق</label>
+              <label class="option"><input type="radio" name="q5_discovery_source" value="آخر" /> آخر</label>
+            </div>
+          </div>
+
+          <input type="hidden" name="client_timestamp" id="client_timestamp" />
+          <input type="hidden" name="page_title" value="مينا في ظل الخليفة" />
+
+          <div class="submit-row">
+            <button id="submitBtn" type="submit">إرسال الإجابات</button>
+            <div id="status" class="status" role="status"></div>
+          </div>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybLycq9tdNY-yj5blHXeeS8HlImgmZZ3Q50yF3DVs_TTMnZifJMWVR-mOIajcXqrq0/exec";
+
+    const form = document.getElementById("movieForm");
+    const statusBox = document.getElementById("status");
+    const submitBtn = document.getElementById("submitBtn");
+    const timestampInput = document.getElementById("client_timestamp");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      timestampInput.value = new Date().toISOString();
+      submitBtn.disabled = true;
+      statusBox.textContent = "جاري إرسال الإجابات...";
+
+      const formData = new FormData(form);
+      const body = new URLSearchParams();
+
+      for (const [key, value] of formData.entries()) {
+        body.append(key, value);
+      }
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        body: body
+      })
+      .then(function () {
+        statusBox.textContent = "تم تسجيل إجاباتك بنجاح.";
+        form.reset();
+      })
+      .catch(function () {
+        statusBox.textContent = "حدث خطأ أثناء الإرسال. برجاء المحاولة مرة أخرى.";
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+      });
+    });
+  </script>
+</body>
+</html>
