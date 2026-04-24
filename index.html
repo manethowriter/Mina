@@ -480,14 +480,26 @@
       submitBtn.disabled = true;
       statusBox.textContent = "جاري إرسال الإجابات...";
 
-      try {
-        const formData = new FormData(form);
-
-        await fetch(GOOGLE_SCRIPT_URL, {
-          method: "POST",
-          mode: "no-cors",
-          body: formData
-        });
+    try {
+      const formData = new FormData(form);
+      const params = new URLSearchParams();
+    
+      for (const [key, value] of formData.entries()) {
+        params.append(key, value);
+      }
+    
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: params.toString()
+      });
+    
+      statusBox.textContent = "تم تسجيل إجاباتك بنجاح.";
+      form.reset();
+    }
 
         statusBox.textContent = "تم تسجيل إجاباتك بنجاح.";
         form.reset();
