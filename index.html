@@ -13,7 +13,6 @@
       --gold-soft: #f1d58b;
       --papyrus: #ead7a4;
       --red: #7b1e18;
-      --red-soft: rgba(123, 30, 24, 0.35);
       --white: #fff8e6;
       --muted: #c6b58a;
       --card: rgba(24, 16, 9, 0.88);
@@ -22,9 +21,7 @@
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -214,13 +211,8 @@
       gap: 8px;
     }
 
-    .options.three {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .options.five {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
+    .options.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .options.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 
     .option {
       display: flex;
@@ -238,6 +230,7 @@
       font-size: 14px;
       line-height: 1.4;
       text-align: center;
+      user-select: none;
     }
 
     .option:hover {
@@ -325,10 +318,7 @@
     }
 
     @media (max-width: 920px) {
-      .shell {
-        grid-template-columns: 1fr;
-      }
-
+      .shell { grid-template-columns: 1fr; }
       .intro {
         position: relative;
         top: auto;
@@ -348,9 +338,7 @@
         padding: 18px;
       }
 
-      .intro {
-        min-height: 420px;
-      }
+      .intro { min-height: 420px; }
 
       .options,
       .options.three,
@@ -397,7 +385,7 @@
           <p>بعد الإرسال، سيتم تسجيل إجابتك مع التاريخ والوقت تلقائيًا.</p>
         </div>
 
-        <form id="movieForm">
+        <form id="movieForm" method="POST">
           <div class="field">
             <label class="question" for="tiktok">اسم مستخدم تيك توك</label>
             <input id="tiktok" name="tiktok_username" type="text" placeholder="@username" required />
@@ -466,38 +454,47 @@
   </main>
 
   <script>
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybLycq9tdNY-yj5blHXeeS8HlImgmZZ3Q50yF3DVs_TTMnZifJMWVR-mOIajcXqrq0/exec";
 
-<script>
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybLycq9tdNY-yj5blHXeeS8HlImgmZZ3Q50yF3DVs_TTMnZifJMWVR-mOIajcXqrq0/exec";
+    const form = document.getElementById("movieForm");
+    const statusBox = document.getElementById("status");
+    const submitBtn = document.getElementById("submitBtn");
+    const timestampInput = document.getElementById("client_timestamp");
 
-  const form = document.getElementById("movieForm");
-  const statusBox = document.getElementById("status");
-  const submitBtn = document.getElementById("submitBtn");
-  const timestampInput = document.getElementById("client_timestamp");
-  const hiddenIframe = document.getElementById("hidden_iframe");
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
 
-  let submitted = false;
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
 
-  form.setAttribute("action", GOOGLE_SCRIPT_URL);
-  form.setAttribute("method", "POST");
-  form.setAttribute("target", "hidden_iframe");
+      timestampInput.value = new Date().toISOString();
+      submitBtn.disabled = true;
+      statusBox.textContent = "جاري إرسال الإجابات...";
 
-  form.addEventListener("submit", function () {
-    timestampInput.value = new Date().toISOString();
-    submitted = true;
-    submitBtn.disabled = true;
-    statusBox.textContent = "جاري إرسال الإجابات...";
-  });
+      const formData = new FormData(form);
+      const body = new URLSearchParams();
 
-  hiddenIframe.addEventListener("load", function () {
-    if (!submitted) return;
+      for (const [key, value] of formData.entries()) {
+        body.append(key, value);
+      }
 
-    statusBox.textContent = "تم تسجيل إجاباتك بنجاح.";
-    form.reset();
-    submitBtn.disabled = false;
-    submitted = false;
-  });
-</script>
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        body: body
+      })
+      .then(function () {
+        statusBox.textContent = "تم تسجيل إجاباتك بنجاح.";
+        form.reset();
+      })
+      .catch(function () {
+        statusBox.textContent = "حدث خطأ أثناء الإرسال. برجاء المحاولة مرة أخرى.";
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+      });
+    });
+  </script>
 </body>
 </html>
