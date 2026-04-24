@@ -20,9 +20,7 @@
       --border: rgba(214, 168, 77, 0.28);
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
     }
-
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       min-height: 100vh;
@@ -34,7 +32,6 @@
         linear-gradient(135deg, #050302, var(--bg-2) 55%, #030201);
       overflow-x: hidden;
     }
-
     body::before {
       content: "";
       position: fixed;
@@ -46,21 +43,18 @@
       pointer-events: none;
       mask-image: linear-gradient(to bottom, black, transparent 88%);
     }
-
     .page {
       width: min(1050px, calc(100% - 28px));
       margin: 0 auto;
       padding: 28px 0;
       position: relative;
     }
-
     .shell {
       display: grid;
       grid-template-columns: 0.8fr 1.2fr;
       gap: 22px;
       align-items: stretch;
     }
-
     .intro {
       position: sticky;
       top: 24px;
@@ -74,7 +68,6 @@
       box-shadow: var(--shadow);
       overflow: hidden;
     }
-
     .intro::before {
       content: "";
       position: absolute;
@@ -83,7 +76,6 @@
       border-radius: 22px;
       pointer-events: none;
     }
-
     .intro::after {
       content: "";
       position: absolute;
@@ -94,7 +86,6 @@
       background: radial-gradient(circle, rgba(214, 168, 77, 0.32), transparent 65%);
       filter: blur(10px);
     }
-
     .seal {
       width: 72px;
       height: 72px;
@@ -107,28 +98,24 @@
       font-size: 30px;
       margin-bottom: 22px;
     }
-
     .eyebrow {
       color: var(--gold-soft);
       font-size: 13px;
       letter-spacing: 1px;
       margin-bottom: 12px;
     }
-
     h1 {
       margin: 0;
       font-size: clamp(36px, 5vw, 62px);
       line-height: 1.05;
       text-shadow: 0 8px 28px rgba(0,0,0,0.65);
     }
-
     .subtitle {
       margin: 20px 0 0;
       color: var(--papyrus);
       font-size: 16px;
       line-height: 1.85;
     }
-
     .mini-card {
       position: absolute;
       left: 24px;
@@ -141,21 +128,18 @@
       backdrop-filter: blur(12px);
       z-index: 1;
     }
-
     .mini-card strong {
       display: block;
       color: var(--gold-soft);
       margin-bottom: 8px;
       font-size: 17px;
     }
-
     .mini-card p {
       margin: 0;
       color: #e7d5a8;
       line-height: 1.7;
       font-size: 14px;
     }
-
     .form-panel {
       border: 1px solid var(--border);
       border-radius: 28px;
@@ -164,38 +148,32 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(16px);
     }
-
     .form-header {
       margin-bottom: 16px;
       padding-bottom: 16px;
       border-bottom: 1px solid rgba(214, 168, 77, 0.16);
     }
-
     h2 {
       margin: 0 0 8px;
       font-size: 27px;
       color: var(--white);
     }
-
     .form-header p {
       margin: 0;
       color: var(--muted);
       line-height: 1.65;
       font-size: 14px;
     }
-
     form {
       display: grid;
       gap: 12px;
     }
-
     .field {
       border: 1px solid rgba(214, 168, 77, 0.18);
       background: var(--card-2);
       border-radius: 18px;
       padding: 14px;
     }
-
     .question {
       display: block;
       color: var(--gold-soft);
@@ -204,16 +182,13 @@
       font-size: 15px;
       line-height: 1.55;
     }
-
     .options {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
     }
-
     .options.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .options.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-
     .option {
       display: flex;
       align-items: center;
@@ -230,28 +205,23 @@
       font-size: 14px;
       line-height: 1.4;
       text-align: center;
-      user-select: none;
     }
-
     .option:hover {
       border-color: rgba(241, 213, 139, 0.42);
       background: rgba(123, 30, 24, 0.20);
       transform: translateY(-1px);
     }
-
     .option input {
       position: absolute;
       opacity: 0;
       pointer-events: none;
     }
-
     .option:has(input:checked) {
       border-color: rgba(241, 213, 139, 0.86);
       background: linear-gradient(135deg, rgba(214,168,77,0.22), rgba(123,30,24,0.18));
       color: var(--white);
       box-shadow: inset 0 0 0 1px rgba(214,168,77,0.14);
     }
-
     input[type="text"] {
       width: 100%;
       min-height: 48px;
@@ -265,19 +235,16 @@
       direction: ltr;
       text-align: left;
     }
-
     input[type="text"]:focus {
       border-color: rgba(241, 213, 139, 0.78);
       box-shadow: 0 0 0 4px rgba(214, 168, 77, 0.11);
     }
-
     .hint {
       margin-top: 7px;
       color: var(--muted);
       font-size: 12px;
       line-height: 1.5;
     }
-
     .submit-row {
       display: flex;
       align-items: center;
@@ -285,7 +252,6 @@
       margin-top: 2px;
       flex-wrap: wrap;
     }
-
     button {
       border: none;
       border-radius: 16px;
@@ -298,25 +264,22 @@
       box-shadow: 0 12px 28px rgba(214, 168, 77, 0.22);
       transition: 0.16s ease;
     }
-
     button:hover {
       transform: translateY(-2px);
       filter: brightness(1.05);
     }
-
     button:disabled {
       opacity: 0.62;
       cursor: not-allowed;
       transform: none;
     }
-
     .status {
       min-height: 24px;
       color: var(--papyrus);
       font-size: 14px;
       line-height: 1.6;
     }
-
+    #hidden_iframe { display: none; }
     @media (max-width: 920px) {
       .shell { grid-template-columns: 1fr; }
       .intro {
@@ -325,32 +288,21 @@
         min-height: 430px;
       }
     }
-
     @media (max-width: 640px) {
       .page {
         width: min(100% - 18px, 1050px);
         padding: 14px 0;
       }
-
-      .intro,
-      .form-panel {
+      .intro, .form-panel {
         border-radius: 22px;
         padding: 18px;
       }
-
       .intro { min-height: 420px; }
-
-      .options,
-      .options.three,
-      .options.five {
-        grid-template-columns: 1fr;
-      }
-
+      .options, .options.three, .options.five { grid-template-columns: 1fr; }
       .option {
         justify-content: flex-start;
         text-align: right;
       }
-
       .mini-card {
         left: 18px;
         right: 18px;
@@ -367,15 +319,11 @@
         <div class="seal">𓂀</div>
         <div class="eyebrow">اختبار مشاهدة قصير</div>
         <h1>مينا في ظل الخليفة</h1>
-        <p class="subtitle">
-          جاوب على خمسة أسئلة سريعة عن الفيلم، واكتب اسمك على تيك توك لتسجيل مشاركتك.
-        </p>
+        <p class="subtitle">جاوب على خمسة أسئلة سريعة عن الفيلم، واكتب اسمك على تيك توك لتسجيل مشاركتك.</p>
 
         <div class="mini-card">
           <strong>ثورة البشموريين | 749م - 750م</strong>
-          <p>
-            فيلم مصري قصير بالذكاء الاصطناعي يستعيد لحظة تاريخية نادرة من ذاكرة مصر، بين رشيد، البشمور، ومينا أبكير.
-          </p>
+          <p>فيلم مصري قصير بالذكاء الاصطناعي يستعيد لحظة تاريخية نادرة من ذاكرة مصر، بين رشيد، البشمور، ومينا أبكير.</p>
         </div>
       </aside>
 
@@ -385,7 +333,7 @@
           <p>بعد الإرسال، سيتم تسجيل إجابتك مع التاريخ والوقت تلقائيًا.</p>
         </div>
 
-        <form id="movieForm" method="POST">
+        <form id="movieForm" action="https://script.google.com/macros/s/AKfycbybLycq9tdNY-yj5blHXeeS8HlImgmZZ3Q50yF3DVs_TTMnZifJMWVR-mOIajcXqrq0/exec" method="POST" target="hidden_iframe">
           <div class="field">
             <label class="question" for="tiktok">اسم مستخدم تيك توك</label>
             <input id="tiktok" name="tiktok_username" type="text" placeholder="@username" required />
@@ -449,51 +397,35 @@
             <div id="status" class="status" role="status"></div>
           </div>
         </form>
+
+        <iframe name="hidden_iframe" id="hidden_iframe"></iframe>
       </section>
     </section>
   </main>
 
   <script>
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxJ-Jho-ZASmRDLN30LTx5KzEgVRpjsPVhPGI2MSQhT4qnjUpJamQg--7nUoMkM1GAf/exec";
-
     const form = document.getElementById("movieForm");
     const statusBox = document.getElementById("status");
     const submitBtn = document.getElementById("submitBtn");
     const timestampInput = document.getElementById("client_timestamp");
+    const hiddenIframe = document.getElementById("hidden_iframe");
 
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
+    let submitted = false;
 
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
+    form.addEventListener("submit", function () {
       timestampInput.value = new Date().toISOString();
+      submitted = true;
       submitBtn.disabled = true;
       statusBox.textContent = "جاري إرسال الإجابات...";
+    });
 
-      const formData = new FormData(form);
-      const body = new URLSearchParams();
+    hiddenIframe.addEventListener("load", function () {
+      if (!submitted) return;
 
-      for (const [key, value] of formData.entries()) {
-        body.append(key, value);
-      }
-
-      fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        body: body
-      })
-      .then(function () {
-        statusBox.textContent = "تم تسجيل إجاباتك بنجاح.";
-        form.reset();
-      })
-      .catch(function () {
-        statusBox.textContent = "حدث خطأ أثناء الإرسال. برجاء المحاولة مرة أخرى.";
-      })
-      .finally(function () {
-        submitBtn.disabled = false;
-      });
+      statusBox.textContent = "تم تسجيل إجاباتك بنجاح.";
+      form.reset();
+      submitBtn.disabled = false;
+      submitted = false;
     });
   </script>
 </body>
