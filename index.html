@@ -466,49 +466,38 @@
   </main>
 
   <script>
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw37Y5oXHaNUZ0TmRVs_o5OISRligzVswjPntckin7YlFBjJx9ef9HHd6Ee61o2FTjk/exec";
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-    const form = document.getElementById("movieForm");
-    const statusBox = document.getElementById("status");
-    const submitBtn = document.getElementById("submitBtn");
-    const timestampInput = document.getElementById("client_timestamp");
+<script>
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybLycq9tdNY-yj5blHXeeS8HlImgmZZ3Q50yF3DVs_TTMnZifJMWVR-mOIajcXqrq0/exec";
 
-    form.addEventListener("submit", async function (event) {
-      event.preventDefault();
+  const form = document.getElementById("movieForm");
+  const statusBox = document.getElementById("status");
+  const submitBtn = document.getElementById("submitBtn");
+  const timestampInput = document.getElementById("client_timestamp");
+  const hiddenIframe = document.getElementById("hidden_iframe");
 
-      timestampInput.value = new Date().toISOString();
-      submitBtn.disabled = true;
-      statusBox.textContent = "جاري إرسال الإجابات...";
+  let submitted = false;
 
-    try {
-      const formData = new FormData(form);
-      const params = new URLSearchParams();
-    
-      for (const [key, value] of formData.entries()) {
-        params.append(key, value);
-      }
-    
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-        },
-        body: params.toString()
-      });
-    
-      statusBox.textContent = "تم تسجيل إجاباتك بنجاح.";
-      form.reset();
-    }
+  form.setAttribute("action", GOOGLE_SCRIPT_URL);
+  form.setAttribute("method", "POST");
+  form.setAttribute("target", "hidden_iframe");
 
-        statusBox.textContent = "تم تسجيل إجاباتك بنجاح.";
-        form.reset();
-      } catch (error) {
-        statusBox.textContent = "حدث خطأ أثناء الإرسال. حاول مرة أخرى.";
-      } finally {
-        submitBtn.disabled = false;
-      }
-    });
-  </script>
+  form.addEventListener("submit", function () {
+    timestampInput.value = new Date().toISOString();
+    submitted = true;
+    submitBtn.disabled = true;
+    statusBox.textContent = "جاري إرسال الإجابات...";
+  });
+
+  hiddenIframe.addEventListener("load", function () {
+    if (!submitted) return;
+
+    statusBox.textContent = "تم تسجيل إجاباتك بنجاح.";
+    form.reset();
+    submitBtn.disabled = false;
+    submitted = false;
+  });
+</script>
 </body>
 </html>
